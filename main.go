@@ -10,7 +10,7 @@ package main
 
 
 func main() {
-	// Connect MySQL
+	// Connect connectio
 	config.Connect()
 
 	// AutoMigrate Models
