@@ -1,20 +1,17 @@
 package routes
 
 import (
-	"github.com/mareligncode/selam/controllers"
-
 	"github.com/gin-gonic/gin"
+	"github.com/mareligncode/selam/controllers"
 )
 
 func RegisterRoutes(r *gin.Engine) {
-
-	r.GET("/", controllers.UserIndex)
-
-	r.GET("/create", controllers.UserCreatePage)
-	r.POST("/create", controllers.UserCreate)
-
-	r.GET("/edit/:id", controllers.UserEditPage)
-	r.POST("/update", controllers.UserUpdate)
-
-	r.GET("/delete/:id", controllers.UserDelete)
+	api := r.Group("/api")
+	{
+		api.GET("/users", controllers.GetUsers)
+		api.GET("/users/:id", controllers.GetUser)
+		api.POST("/users", controllers.CreateUser)
+		api.PUT("/users/:id", controllers.UpdateUser)
+		api.DELETE("/users/:id", controllers.DeleteUser)
+	}
 }

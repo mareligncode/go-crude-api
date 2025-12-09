@@ -6,6 +6,7 @@ package main
     "github.com/mareligncode/selam/models"
     "github.com/mareligncode/selam/routes"
      "github.com/gin-gonic/gin"
+	 "github.com/gin-contrib/cors"
 )
 
 
@@ -17,6 +18,7 @@ func main() {
 	config.AutoMigrate(&models.User{})
 
 	r := gin.Default()
+	r.Use(cors.Default())
 
 	// Load Bootstrap HTML templates
 	r.LoadHTMLGlob("templates/*")
